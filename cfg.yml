@@ -1,0 +1,189 @@
+dataset:
+    ip:
+        pca: False
+        path: indian pines
+        class_num: 16
+        in_channel: 200
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['Alfalfa', 'Corn-notill', 'Corn-mintill', 'Corn', 'Grass-pasture', 'Grass-trees',
+                  'Grass-pasture-mowed', 'Hay-windrowed', 'Oats', 'Soybean-notill', 'Soybean-mintill', 'Soybean-clean',
+                  'Wheat', 'Woods', 'Buildings-Grass-Trees-Drives', 'Stone-Steel-Towers' ]
+        plot_size: 17
+        font_size: 16
+        title_size: 19
+        axes_size: 17
+        tick_size: 15
+        legend_size: 15
+        text_size: 14
+    pu:
+        pca: False
+        path: pavia university
+        class_num: 9
+        in_channel: 103
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['Asphalt', 'Meadows', 'Gravel', 'Trees', 'Painted metal sheets', 'Bare Soil', 'Bitumen',
+                  'Self-Blocking Bricks', 'Shadows']
+        plot_size: 11
+        font_size: 11
+        title_size: 17
+        axes_size: 11
+        tick_size: 13
+        legend_size: 10
+        text_size: 13
+    hanchuan:
+        pca: False
+        path: whu-hanchuan
+        class_num: 16
+        in_channel: 274
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['草莓', '豇豆', '大豆', '高粱', '菠菜', '西瓜', '菜园', '树木', '草地', '红色屋顶', '灰色屋顶', '地膜',
+                  '裸土', '道路', '高亮物体', '水体']
+        plot_size: 16
+        font_size: 16
+        title_size: 19
+        axes_size: 16
+        tick_size: 15
+        legend_size: 15
+        text_size: 14
+    longkou:
+        pca: False
+        path: whu-longkou
+        class_num: 9
+        in_channel: 270
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['玉米', '棉花', '芝麻', '圆页大豆', '长叶大豆', '水稻', '水体', '房屋和道路', '混合杂草']
+        plot_size: 11
+        font_size: 11
+        title_size: 17
+        axes_size: 11
+        tick_size: 13
+        legend_size: 10
+        text_size: 13
+    ksc:
+        pca: False
+        path: ksc
+        class_num: 13
+        in_channel: 176
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['Scrub', 'Willow swamp', 'Cabbage palm hammock', 'Cabbage palm/oak hammock', 'Slash pine',
+                    'Oak/broadleaf hammock', 'Hardwood swamp', 'Graminoid marsh', 'Spartina marsh', 'Cattail marsh',
+                    'Salt marsh', 'Mud flats', 'Water']
+        plot_size: 14
+        font_size: 14
+        title_size: 18
+        axes_size: 14
+        tick_size: 15
+        legend_size: 13
+        text_size: 13
+    botswana:
+        pca: False
+        path: botswana
+        class_num: 14
+        in_channel: 145
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['Water', 'Hippo grass', 'Floodplain grasses1', 'Floodplain grasses2', 'Reeds', 'Riparian',
+                    'Firescar', 'Island interior', 'Acacia woodlands', 'Acacia shrublands', 'Acacia grasslands',
+                    'Short mopane', 'Mixed mopane', 'Exposed soils']
+        plot_size: 15
+        font_size: 15
+        title_size: 18
+        axes_size: 15
+        tick_size: 15
+        legend_size: 14
+        text_size: 14
+    pc:
+        pca: False
+        path: pavia center
+        class_num: 9
+        in_channel: 102
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['Water', 'Trees', 'Meadows', 'Self-blocking bricks', 'Bare soil', 'Asphalt', 'Bitumen', 'Tiles',
+                  'Shadows']
+        plot_size: 11
+        font_size: 11
+        title_size: 17
+        axes_size: 11
+        tick_size: 13
+        legend_size: 10
+        text_size: 13
+    salinas:
+        pca: False
+        path: salinas
+        class_num: 16
+        in_channel: 204
+        pca_channel: 64
+        per_class_num: 1500
+        classes: ['Brocoli_green_weeds_1', 'Brocoli_green_weeds_2', 'Fallow', 'Fallow_rough_plow', 'Fallow_smooth',
+                  'Stubble', 'Celery', 'Grapes_untrained', 'Soil_vinyard_develop', 'Corn_senesced_green_weeds',
+                  'Lettuce_romaine_4wk', 'Lettuce_romaine_5wk', 'Lettuce_romaine_6wk', 'Lettuce_romaine_7wk',
+                  'Vinyard_untrained', 'Vinyard_vertical_trellis']
+        plot_size: 17
+        font_size: 16
+        title_size: 19
+        axes_size: 17
+        tick_size: 15
+        legend_size: 15
+        text_size: 14
+
+model:
+    split_class: True # 是否按类别分离class token
+    img_patch:
+        use: True # 是否使用分patch学习
+        patch_size: [7, 7] # 尺寸
+        stride: [4, 4] # 步长
+    class_use_old_feature: True # 是否使用历史class token
+    input_dim_multiple_num: 16 # 注意力维度增加倍数
+    layers: [
+                # 1.输入token维度 2.多头注意力数量 3.输入class token数量，4.输出增加class token数量 5.输出class token维度
+                [       32,            4,            1,                       1,                 16],
+                [       16,            4,            2,                       2,                  8],
+#                [        8,            4,            4,                       4,                  4],
+#                [       4,             4,            8,                       8,                  2],
+#                [       2,             4,           16,                       16,                 1]
+    ] # 整体结构
+data:
+    argument_mode: 'flip'
+    main_path: "../dataset"
+    pre_model: ""
+    input_size: [13, 13]
+    crop_size: [13, 13]
+    dwt: False
+    rotate:
+        num: 6
+train:
+    device_ids: [0, 1, 2, 3]
+    batch_size: 64
+    parrllel: False
+    epochs: 100
+    grad_clip: False
+    min_grad: -1
+    max_grad: 1
+optim:
+    weight_decay: !!float 1e-4
+    optimizer: "AdamW"
+    lr: !!float 1e-3
+    min_lr: !!float 1e-6
+    beta1: 0.9
+    beta2: 0.99
+    amsgrad: false
+    eps: 0.00000001
+ablation:
+#    1. 空间 光谱 空间+光谱
+    v1:
+#       是否使用光谱特征
+        spec_token: True
+#       是否使用空间特征
+        spat_token: True
+#    2. 是否使用特征融合
+    v2: # 不能在不使用class_image_fution时，使用change_token_dim
+#       是否使用类别token和图像token融合
+        class_image_fution: True
+#       是否改变token维度
+        change_token_dim: True
